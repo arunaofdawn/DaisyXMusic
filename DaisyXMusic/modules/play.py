@@ -62,7 +62,7 @@ def cb_admin_check(func: Callable) -> Callable:
         if cb.from_user.id in admemes:
             return await func(client, cb)
         else:
-            await cb.answer("You ain't allowed!", show_alert=True)
+            await cb.answer("Anda tidak diizinkan!", show_alert=True)
             return
 
     return decorator
@@ -205,7 +205,7 @@ async def ee(client, message):
     if stats:
         await message.reply(stats)
     else:
-        await message.reply("No VC instances running in this chat")
+        await message.reply("このチャットで実行されているVCインスタンスはありません")
 
 
 @Client.on_message(filters.command("player") & filters.group & ~filters.edited)
@@ -395,16 +395,16 @@ async def m_cb(b, cb):
                 pass
 
             callsmusic.pytgcalls.leave_group_call(chet_id)
-            await cb.message.edit("Successfully Left the Chat!")
+            await cb.message.edit("Berhasil Meninggalkan Obrolan!")
         else:
-            await cb.answer("Chat is not connected!", show_alert=True)
+            await cb.answer("Obrolan tidak terhubung!", show_alert=True)
 
 
 @Client.on_message(command("play") & other_filters)
 async def play(_, message: Message):
     global que
     global useer
-    lel = await message.reply("🔄 **Processing**")
+    lel = await message.reply("🔄 **Diproses**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -447,7 +447,7 @@ async def play(_, message: Message):
                 except Exception:
                     # print(e)
                     await lel.edit(
-                        f"<b>🔴Kesalahan Flood tunguu🔴 \nUser {user.first_name} tidak dapat bergabung dengan grup Anda karena banyaknya permintaan untuk asisten bot! Pastikan pengguna tidak dilarang di grup."
+                        f"<b>🔴Kesalahan Flood tunggu🔴 \nUser {user.first_name} tidak dapat bergabung dengan grup Anda karena banyaknya permintaan untuk asisten bot! Pastikan pengguna tidak dilarang di grup."
                         "\n\nAtau tambahkan asisten secara manual ke Grup Anda dan coba lagi</b>",
                     )
     try:
@@ -461,7 +461,7 @@ async def play(_, message: Message):
     message.from_user.id
     message.from_user.first_name
     text_links=None
-    await lel.edit("🔎 **Finding**")
+    await lel.edit("🔎 **Sabar lagi nyari!**")
     message.from_user.id
     if message.reply_to_message:
         entities = []
@@ -495,7 +495,7 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("💽 Daftar Putar", callback_data="playlist"),
+                    InlineKeyboardButton("💽 playlist", callback_data="playlist"),
                     InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
                 ],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="cls")],
@@ -516,7 +516,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🎵 **Processing**")
+        await lel.edit("🎵 **Sabar load..**`kalo tetep ga bisa restart aja ajg gosah ngeluh gratisan!`")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -542,7 +542,7 @@ async def play(_, message: Message):
         keyboard = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("💽 Daftar Putar", callback_data="playlist"),
+                    InlineKeyboardButton("💽 Playlist", callback_data="playlist"),
                     InlineKeyboardButton("🔊 Support", url=f"https://t.me/arunasupportbot"),
                 ],
                 [InlineKeyboardButton(text="❌ Tutup", callback_data="cls")],
@@ -556,7 +556,7 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("🎵 **Processing**")
+        await lel.edit("🎵 **Diproses**")
         ydl_opts = {"format": "bestaudio[ext=m4a]"}
         results = YoutubeSearch(query, max_results=5).to_dict()
         # Looks like hell. Aren't it?? FUCK OFF
@@ -564,10 +564,10 @@ async def play(_, message: Message):
         j = 0
         useer=user_name
         while j < 5:
-            toxxt += f"Title - {results[j]['title']}\n"
-            toxxt += f"Duration - {results[j]['duration']}\n"
-            toxxt += f"Views - {results[j]['views']}\n"
-            toxxt += f"Channel - {results[j]['channel']}\n"
+            toxxt += f"**Judul** - {results[j]['title']}\n"
+            toxxt += f"╔**Durasi** - {results[j]['duration']}\n"
+            toxxt += f"╠**Views** - {results[j]['views']}\n"
+            toxxt += f"╚**Channel** - {results[j]['channel']}\n"
             toxxt += f"https://youtube.com{results[j]['url_suffix']}\n\n"
             j += 1            
         koyboard = InlineKeyboardMarkup(
@@ -710,7 +710,7 @@ async def deezer(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("💽 Daftar Putar", callback_data="playlist"),
+                InlineKeyboardButton("💽 Playlist", callback_data="playlist"),
                 InlineKeyboardButton("🔊 Support", url=f"https://t.me/arunasupportbot"),
             ],
             [InlineKeyboardButton(text="Menu ⏯", callback_data="menu")],
@@ -837,7 +837,7 @@ async def jiosaavn(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("💽 Daftar Putar", callback_data="playlist"),
+                InlineKeyboardButton("💽 Playlist", callback_data="playlist"),
                 InlineKeyboardButton("Menu ⏯ ", callback_data="menu"),
             ],
             [
@@ -931,7 +931,7 @@ async def lol_cb(b, cb):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("💽 Daftar Putar", callback_data="playlist"),
+                InlineKeyboardButton("💽 Playlist", callback_data="playlist"),
                 InlineKeyboardButton("🔊 Support", url=f"https://t.me/arunasupportbot"),
             ],
             [InlineKeyboardButton(text="❌ Tutup", callback_data="cls")],
